@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNexusStore } from '../../store/nexusStore';
 import { Product } from '../products/productsData';
 import { 
-  Shield, BarChart3, Plus, Edit2, Trash2, CheckCircle, 
-  Truck, Package, XSquare, PlusCircle, Trash, RefreshCw
+  Shield, BarChart3, Plus, Edit2, Trash2, PlusCircle, Trash
 } from 'lucide-react';
 
 export default function AdminDashboard() {
@@ -72,15 +71,17 @@ export default function AdminDashboard() {
     const newProd: Product = {
       id: `PRD-${Date.now().toString().slice(-6)}`,
       brand: newBrand,
+      brandLogo: '💎',
       name: newName,
       category: newCategory,
+      subcategory: newCategory,
       originalPrice: priceNum,
       discountPrice: discountPrice,
       discountPercent: discNum,
       rating: 4.5,
       reviewsCount: 1,
       imageUrl: newImg,
-      galleryUrls: [newImg],
+      gallery: [newImg],
       description: newDesc,
       specifications: {
         'Core Build': 'Carbon composite',
@@ -88,10 +89,16 @@ export default function AdminDashboard() {
       },
       features: ['Secured ledger', 'Certified item'],
       stockStatus: newStock as any,
+      stockCount: 50,
       deliveryTime: '3-5 Days',
       colors: ['Titanium', 'Gold'],
       sizes: ['Standard'],
-      tags: ['new', newCategory.toLowerCase()]
+      tags: ['new', newCategory.toLowerCase()],
+      sellerName: 'Nexus Authorized',
+      returnPolicy: '30-Day Hassle-Free Returns',
+      warranty: '1-Year Direct Manufacturer Warranty',
+      reviews: [],
+      qas: []
     };
 
     addProduct(newProd);
